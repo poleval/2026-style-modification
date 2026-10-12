@@ -115,7 +115,8 @@ $$
 J = \frac{1}{N}\sum_{i=1}^{N} M_i H_i
 $$
 
-where \(N=100\) is the number of human-evaluated fragments per team.
+
+where \(N\) is the number of human-evaluated fragments per team (up to 100). Organizers will prioritize fragments for which the official classifier incorrectly predicts the original author. If a team produces fewer than 100 such fragments, all successful attacks will be included, and the remaining slots will be filled with randomly selected fragments from the team's other submissions.
 
 A fragment contributes positively to \(J\) only when the official classifier makes an incorrect authorship prediction and human annotators correctly recognize the original author's style.
 
