@@ -42,54 +42,113 @@ Participants will receive two datasets: **Test A** (development) and **Test B** 
 
 > **Important:** The Train, Test A, and Test B datasets are **work-disjoint**: fragments from the same literary work never appear in more than one split. This reduces the influence of work-specific vocabulary, characters, events, and topics on authorship recognition.
 
+
 ## Evaluation
 
 The evaluation consists of two stages: **Test A** (development) and **Test B** (final ranking).
 
 ### Test A: Automatic Evaluation
 
-During Test A, participants submit transformed fragments and receive feedback from the official authorship classifier.
+During Test A, participants submit transformed fragments for evaluation by the official authorship classifier.
 
-The leaderboard reports the classifier's **accuracy on the transformed texts**:
-
-$$
-A_{\text{adv}} = \frac{\text{correct automatic author predictions}}{\text{all evaluated transformed texts}}
-$$
-
-**Lower accuracy indicates better adversarial performance.** Participants should aim to reduce this value relative to the baseline accuracy measured on the original, unmodified fragments.
-
-Test A does not include official human evaluation. Participants are encouraged to assess stylistic preservation within their own teams.
-
-### Test B: Final Evaluation
-
-During Test B, the official authorship classifier evaluates all valid transformed fragments. In addition, a fixed, stratified sample of **100 transformed texts per team** is evaluated by multiple independent human annotators.
-
-For each transformed fragment, human annotators answer two questions:
-
-1. **Authorial style:** Which of the four candidate authors' writing styles does the fragment most closely resemble?
-2. **Semantic preservation:** Has the meaning changed compared with the original fragment?
-
-Both judgments support the evaluation process, but **only the authorial-style judgment contributes to the human accuracy component of the final leaderboard score**. Semantic preservation is treated as a validity requirement (see Rules).
-
-**Human accuracy (H)** measures the proportion of valid human authorial-style judgments that correctly identify the original author:
+The leaderboard reports the **Attack Score**, calculated as the reduction in the classifier's accuracy relative to the original, unmodified fragments:
 
 $$
-H = \frac{\text{human judgments correctly identifying the original author}}{\text{all valid human authorial-style judgments}}
-$$
-
-The final score combines the reduction in automatic authorship recognition accuracy with human accuracy:
-
-$$
-\boxed{\text{FinalScore} = 100 \times (A_{\text{orig}} - A_{\text{adv}}) \times H}
+\mathrm{AttackScore} = 100 \times (A_{\mathrm{orig}} - A_{\mathrm{adv}})
 $$
 
 where:
 
-- $A_{\text{orig}}$ is the official classifier's accuracy on the original, unmodified Test B fragments.
-- $A_{\text{adv}}$ is the official classifier's accuracy on the valid transformed Test B fragments.
-- $H$ is **human accuracy**, calculated from human judgments of authorial style.
+- `A_orig` is the official classifier's accuracy on the original, unmodified Test A fragments.
+- `A_adv` is the official classifier's accuracy on the transformed Test A fragments.
 
-A higher final score is better. The score rewards transformations that reduce automatic authorship recognition while keeping the original author's style recognizable to human readers.
+**A higher Attack Score is better.** Positive values indicate that the transformations reduce authorship recognition accuracy, while negative values indicate that they improve it.
+
+Test A does not include official human evaluation. Participants are encouraged to assess semantic and stylistic preservation within their own teams.
+
+### Test B: Final Evaluation
+
+During Test B, the official authorship classifier evaluates all valid transformed fragments. In addition, a fixed sample of **100 transformed fragments per team** is evaluated by independent human annotators.
+
+For each sampled fragment, human annotators answer two questions:
+
+1. **Authorial style:** Which of the four candidate authors' writing styles does the transformed fragment most closely resemble?
+2. **Semantic preservation:** Has the meaning changed compared with the original fragment?
+
+Only the authorial-style judgment contributes to the numerical final score. Semantic preservation is assessed as a validity requirement (see Rules).
+
+#### Automatic Attack Score
+
+As in Test A, the automatic component is calculated as:
+
+$$
+\mathrm{AttackScore} = 100 \times (A_{\mathrm{orig}} - A_{\mathrm{adv}})
+$$
+
+where both accuracy values are measured on Test B.
+
+#### Per-Example Joint Evaluation
+
+For each human-evaluated fragment \(i\), two components are calculated:
+
+**Model error (\(M_i\))** indicates whether the official classifier incorrectly identifies the original author of the transformed fragment:
+
+$$
+M_i =
+\begin{cases}
+1 & \text{if the classifier predicts an incorrect author},\\
+0 & \text{if the classifier predicts the correct author}.
+\end{cases}
+$$
+
+**Human accuracy (\(H_i\))** is the proportion of valid human authorial-style judgments that correctly identify the original author:
+
+$$
+H_i =
+\frac{\text{correct human authorial-style judgments for fragment }i}
+{\text{valid human authorial-style judgments for fragment }i}
+$$
+
+The joint evaluation score is the mean of the per-example products:
+
+$$
+J = \frac{1}{N}\sum_{i=1}^{N} M_i H_i
+$$
+
+where \(N=100\) is the number of human-evaluated fragments per team.
+
+A fragment contributes positively to \(J\) only when the official classifier makes an incorrect authorship prediction and human annotators correctly recognize the original author's style.
+
+#### Final Score
+
+The final leaderboard score combines the automatic Attack Score with the joint evaluation score:
+
+$$
+\boxed{
+\mathrm{FinalScore}
+=
+\mathrm{AttackScore} \times J
+}
+$$
+
+Equivalently:
+
+$$
+\boxed{
+\mathrm{FinalScore}
+=
+100 \times (A_{\mathrm{orig}}-A_{\mathrm{adv}})
+\times
+\left(\frac{1}{N}\sum_{i=1}^{N}M_iH_i\right)
+}
+$$
+
+**A higher Final Score is better.**
+
+The score rewards transformations that reduce automatic authorship recognition accuracy across the Test B dataset while preserving authorial-style cues recognizable to human readers.
+
+Semantic preservation remains a mandatory validity requirement but does not directly contribute to the numerical score.
+
 
 ## Rules
 
