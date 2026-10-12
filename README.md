@@ -192,3 +192,62 @@ Teams may involve external human annotators (e.g., recruited through Prolific), 
 Completion of the assigned human annotation is required for inclusion in the final ranking. Failure to complete it may result in disqualification.
 
 Detailed annotation guidelines will be published in the second half of November.
+
+
+## Recommended Literature
+
+The following publications provide background on writing style, human and computational style perception, authorship analysis, and adversarial text modification. They may be useful for developing systems that reduce automatic authorship recognition while preserving human-recognizable stylistic features.
+
+### 1. Writing Style and Human Perception
+
+1. **Księżniak, E. (2026).** [Comparing Human and Model Perception of Writing Style under Controlled Perturbations](https://aclanthology.org/2026.eacl-srw.62/). *Proceedings of the Student Research Workshop at EACL 2026*.  
+   A thesis proposal investigating differences between human and computational perceptions of writing style under controlled linguistic modifications.
+
+2. **Jafaritazehjani, S. (2023).** [Towards an Improved Understanding of the Concept of Style and Its Implications for Textual Style Transfer](https://arrow.tudublin.ie/sciendoc/270/). Ph.D. thesis, Technological University Dublin, Ireland.  
+   Examines the concept of textual style and its implications for style transfer.
+
+3. **Gardner, H. (1971).** [The Development of Sensitivity to Artistic Styles](https://www.researchgate.net/publication/249934249_ON_GOING_BEYOND_THE_LITERAL_THE_DEVELOPMENT_OF_SENSITIVITY_TO_ARTISTIC_SYMBOLS). *The Journal of Aesthetics and Art Criticism, 29*(4), 515–527.  
+   An early investigation of human sensitivity to artistic styles and the development of stylistic recognition.
+
+4. **Pavlick, E., & Tetreault, J. (2016).** [An Empirical Analysis of Formality in Online Communication](https://aclanthology.org/Q16-1005/). *Transactions of the Association for Computational Linguistics, 4*, 61–74.  
+   An empirical investigation of linguistic features associated with formality and their role in computational style analysis.
+
+5. **Boger, T., & Firestone, C. (2025).** [The Psychophysics of Style](https://www.nature.com/articles/s41562-025-02249-8). *Nature Human Behaviour, 9*, 2497–2509.  
+   Investigates the cognitive foundations of visual style perception through psychophysical experiments, including how humans distinguish stylistic form from content.
+
+6. **Gra w klasy, czyli analiza lingwistycznych cech idiopoetyki na marginesie zautomatyzowanej klasyfikacji utworów poetyckich i ich parodii.** [Publication link](https://www.researchgate.net/publication/377987393_Gra_w_klasy_czyli_analiza_lingwistycznych_cech_idiopoetyki_na_marginesie_zautomatyzowanej_klasyfikacji_utworow_poetyckich_i_ich_parodii).  
+   A Polish-language study examining linguistic features of individual poetic styles in the context of automated classification of poems and their parodies.
+
+### 2. Computational Style Representation and Authorship
+
+7. **Kim, J., & Jurgens, D. (2026).** [Interpreting Style Representations via Style-Eliciting Prompts](https://aclanthology.org/2026.findings-acl.2039/). *Findings of the Association for Computational Linguistics: ACL 2026*, 41030–41048.  
+   Introduces an interpretable framework for recovering stylistic attributes from learned representations using style-eliciting prompts.
+
+8. **Baumler, C., Bao, C., Nghiem, H., Yang, X., Carpuat, M., & Daumé III, H. (2026).** [Can You Make It Sound Like You? Post-Editing LLM-Generated Text for Personal Style](https://aclanthology.org/2026.acl-long.2030/). *Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)*, 43867–43895.  
+   Investigates how human post-editing changes the stylistic characteristics of LLM-generated text, revealing differences between perceived stylistic authenticity and computational similarity measures.
+
+9. **Sai Teja, L. D. M. S., Krishna, N. S. G., Khan, U., Khan, M. H., & Mishra, A. (2026).** [DAMASHA: Detecting AI in Mixed Adversarial Texts via Segmentation with Human-interpretable Attribution](https://aclanthology.org/2026.findings-eacl.326/). *Findings of the Association for Computational Linguistics: EACL 2026*, 6189–6206.  
+   Presents a framework for detecting mixed human–AI authorship and evaluating robustness against adversarial modifications using interpretable stylistic features.
+
+### 3. Authorship Obfuscation and Adversarial Text Modification
+
+10. **Fisher et al. (2024).** [StyleRemix: Interpretable Authorship Obfuscation via Distillation and Perturbation of Style Elements](https://aclanthology.org/2024.emnlp-main.241.pdf). *Proceedings of EMNLP 2024*.  
+    Proposes an interpretable authorship obfuscation approach based on identifying and perturbing stylistic elements.
+
+11. **Liu, F., Abuadbba, S., Moore, K., Nepal, S., Paris, C., Wu, J., Yang, J., & Sheng, Q. Z. (2025).** [Adversarial Attacks Against Automated Fact-Checking: A Survey](https://aclanthology.org/2025.emnlp-main.1171/). *Proceedings of EMNLP 2025*.  
+    Surveys adversarial attacks against automated fact-checking systems, including attack strategies and robustness challenges.
+
+12. **Przybyła, P., McGill, E., & Saggion, H. (2025).** [Attacking Misinformation Detection Using Adversarial Examples Generated by Language Models](https://aclanthology.org/2025.emnlp-main.1405/). *Proceedings of EMNLP 2025*.  
+    Examines language-model-generated adversarial examples designed to challenge automated misinformation detection systems.
+
+13. **Chang, K.-W., He, H., Jia, R., & Singh, S. (2021).** [Robustness and Adversarial Examples in Natural Language Processing](https://aclanthology.org/2021.emnlp-tutorials.5/). *Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing: Tutorial Abstracts*.  
+    Introduces core concepts and approaches in adversarial NLP, including robustness evaluation and adversarial example generation.
+
+### 4. Adversarial Attack Frameworks and Tools
+
+14. **Morris, J. X., Lifland, E., Yoo, J. Y., Grigsby, J., Jin, D., & Qi, Y. (2020).** [TextAttack: A Framework for Adversarial Attacks, Data Augmentation, and Adversarial Training in NLP](https://aclanthology.org/2020.emnlp-demos.16/). *Proceedings of EMNLP 2020: System Demonstrations*.  
+    Introduces TextAttack, a framework for generating adversarial text examples, evaluating model robustness, and performing adversarial training.
+
+15. **Zeng, G., Qi, F., Zhou, Q., Zhang, T., Ma, Z., Hou, B., Zang, Y., Liu, Z., & Sun, M. (2021).** [OpenAttack: An Open-source Textual Adversarial Attack Toolkit](https://aclanthology.org/2021.acl-demo.43/). *Proceedings of ACL-IJCNLP 2021: System Demonstrations*.  
+    Presents an open-source toolkit for implementing, comparing, and evaluating adversarial attacks against NLP models.
+
