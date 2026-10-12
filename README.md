@@ -119,28 +119,19 @@ where \(N=100\) is the number of human-evaluated fragments per team.
 
 A fragment contributes positively to \(J\) only when the official classifier makes an incorrect authorship prediction and human annotators correctly recognize the original author's style.
 
+
 #### Final Score
 
 The final leaderboard score combines the automatic Attack Score with the joint evaluation score:
 
 $$
-\boxed{
-\mathrm{FinalScore}
-=
-\mathrm{AttackScore} \times J
-}
+\mathrm{FinalScore} = \mathrm{AttackScore} \times J
 $$
 
 Equivalently:
 
 $$
-\boxed{
-\mathrm{FinalScore}
-=
-100 \times (A_{\mathrm{orig}}-A_{\mathrm{adv}})
-\times
-\left(\frac{1}{N}\sum_{i=1}^{N}M_iH_i\right)
-}
+\mathrm{FinalScore} = 100 \times (A_{\mathrm{orig}} - A_{\mathrm{adv}}) \times \frac{1}{N} \sum_{i=1}^{N} M_i H_i
 $$
 
 **A higher Final Score is better.**
