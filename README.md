@@ -45,8 +45,52 @@ Additionally, we provide a labeled public_dev.json dataset for independent exper
 > **Important:** The Train, Test A, and Test B datasets are **work-disjoint**: fragments from the same literary work never appear in more than one split. This reduces the influence of work-specific vocabulary, characters, events, and topics on authorship recognition.
 
 The public_dev dataset follows a different setup: it contains previously unseen fragments from literary works that are also represented in the Train dataset. However, the specific fragments included in public_dev were not used during model training. Therefore, public_dev is intended for experimentation and debugging rather than as an independent, work-disjoint evaluation set.
+## Submission and Evaluation
 
-## Evaluation
+### Local Experiments
+
+For independent, ad hoc experimentation, we provide the labeled **[`public_dev.json`](public_dev.json)** dataset and the **[`evaluate_authorship.py`](evaluate_authorship.py)** script.
+
+The script runs inference using two publicly available authorship classifiers trained by the organizers:
+
+- [Polish RoBERTa Base](https://huggingface.co/Ewel/PolEval2026-Task3-Authorship-RoBERTa-Base)
+- [Polish RoBERTa Large](https://huggingface.co/Ewel/PolEval2026-Task3-Authorship-RoBERTa-Large)
+
+It generates a separate classification report for each model, including precision, recall, F1-score, and accuracy.
+
+**To run the evaluation locally:**
+
+1. Install the required dependencies:
+
+   ```bash
+   pip install torch transformers scikit-learn numpy
+   ```
+
+2. Run inference on the original development dataset:
+
+   ```bash
+   python evaluate_authorship.py --input public_dev.json
+   ```
+
+3. To evaluate your own transformations, modify the `text` fields while preserving the original author labels, and run:
+
+   ```bash
+   python evaluate_authorship.py --input transformed.json
+   ```
+
+The classification results obtained on the unmodified **`public_dev.json`** correspond to the baseline performance of these two models. Participants are welcome to modify or extend the evaluation script to suit their experimental needs.
+
+### Official Submission and Evaluation
+
+**Official submissions must be uploaded through the PolEval evaluation system.** Participants must submit a JSON file containing the **fragment ID** and the corresponding **modified text** for each fragment.
+
+Unlike local experiments, official submissions will be evaluated using a **surprise authorship classifier based on the mDeBERTa-v3-base architecture**, which is not publicly released.
+
+**Official evaluation results will be updated twice daily** and will determine the scores used in the official leaderboard.
+
+**Important:** Results obtained with the publicly available Polish RoBERTa models are intended solely for local experimentation. Only scores returned by the official PolEval evaluation system will count toward the competition ranking.
+
+## Evaluation measures
 
 The evaluation consists of two stages: **Test A** (development) and **Test B** (final ranking).
 
