@@ -82,7 +82,21 @@ The classification results obtained on the unmodified **`public_dev.json`** corr
 
 ### Official Submission and Evaluation
 
-**Official submissions must be uploaded through the PolEval evaluation system.** Participants must submit a JSON file containing the **fragment ID** and the corresponding **modified text** for each fragment.
+**Official submissions must be uploaded through the PolEval evaluation system.** For Test A, participants must submit a modified version of **`test_A_input.jsonl`**, preserving the original fragment IDs and replacing the texts with their adversarially transformed versions.
+
+The submission must be in **JSONL format**, with one JSON object per line containing the following fields:
+
+- **`id`**: The original fragment ID from `test_A_input.jsonl` (must remain unchanged).
+- **`text`**: A string containing the adversarially modified text produced by the participant's method.
+
+**Example submission (`submission.jsonl`):**
+
+```jsonl
+{"id": "example_001", "text": "Adversarially modified literary fragment..."}
+{"id": "example_002", "text": "Another modified literary fragment..."}
+```
+
+The example IDs are illustrative; actual submissions must use the IDs provided in `test_A_input.jsonl`.
 
 Unlike local experiments, official submissions will be evaluated using a **surprise authorship classifier based on the mDeBERTa-v3-base architecture**, which is not publicly released.
 
