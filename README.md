@@ -40,8 +40,11 @@ The dataset consists of short prose fragments extracted from Polish Wikisource, 
 
 Participants will receive two datasets: **Test A** (development) and **Test B** (final evaluation). The **Train** dataset will not be released, as it was used to train the official baseline authorship classifier whose accuracy participants aim to reduce.
 
+Additionally, we provide a labeled public_dev.json dataset for independent experimentation. Participants can use this dataset to test their transformations, run inference with the publicly available Polish RoBERTa Base and Polish RoBERTa Large authorship classifiers, and evaluate changes in classification performance
+
 > **Important:** The Train, Test A, and Test B datasets are **work-disjoint**: fragments from the same literary work never appear in more than one split. This reduces the influence of work-specific vocabulary, characters, events, and topics on authorship recognition.
 
+The public_dev dataset follows a different setup: it contains previously unseen fragments from literary works that are also represented in the Train dataset. However, the specific fragments included in public_dev were not used during model training. Therefore, public_dev is intended for experimentation and debugging rather than as an independent, work-disjoint evaluation set.
 
 ## Evaluation
 
